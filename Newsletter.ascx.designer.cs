@@ -137,7 +137,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSubject;
-        
+
         /// <summary>
         /// teMessage control.
         /// </summary>
@@ -146,7 +146,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.TextEditor teMessage;
-        
+                
         /// <summary>
         /// plAttachment control.
         /// </summary>
@@ -163,6 +163,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+        /// protected global::DotNetNuke.UI.UserControls.UrlControl ctlAttachment;
         protected global::DotNetNuke.Web.UI.WebControls.DnnUrlControl ctlAttachment;
         
         /// <summary>

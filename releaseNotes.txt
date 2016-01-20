@@ -1,14 +1,2 @@
-<h3>Newsletters</h3>
-<div class="License">
-	<h3>About Newsletters</h3>
-	<p class="Owner">
-		<b>Version 8.0.0</b><br /><br />
-	</p>
-	<p>This is the initial release of the extracted Newsletters Module</p>
-	
-	<h4>Bug Fixes</h4>
-	<ul>
-		<li>None</li>
-	</ul>
-	
-</div>
+<h3>Newsletters 08.00.00</h3><p>This is the initial release of the extracted Newsletters Module as installable package</p>
+<h3>Please note</h3><p>If you try to install this version on a clean new DNN 8.0.0 install, <strong>the install will fail</strong> due to a leftover record in the ModuleDefinitions table. Delete this record with SQL host options before trying to install this package.<br /><br /><strong>Cancel this install</strong> if you still have to do this or this install will fail!<br /><br />Command line:<br />DELETE FROM ModuleDefinitions where Friendlyname='Newsletters'</p>

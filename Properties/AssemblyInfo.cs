@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("DNN Corporation")]
 [assembly: AssemblyProduct("http://www.dnnsoftware.com")]
-[assembly: AssemblyCopyright("DotNetNuke is copyright 2002-2015 by DNN Corporation. All Rights Reserved.")]
+[assembly: AssemblyCopyright("DotNetNuke is copyright 2002-2016 by DNN Corporation. All Rights Reserved.")]
 [assembly: AssemblyTrademark("DNN")]
 // Version information for an assembly consists of the following four values:
 //
