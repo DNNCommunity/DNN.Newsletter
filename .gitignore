@@ -6,11 +6,13 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.GhostDoc.xml
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
 # Build results
+[Ww]ebsite/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -21,6 +23,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+[Ii]nstall/
 
 # Visual Studo 2015 cache/options directory
 .vs/

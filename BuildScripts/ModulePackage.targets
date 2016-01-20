@@ -1,88 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="windows-1252"?>
+
+<!-- WARNING, WARNING, WARNING -->
+<!-- REMEMBER THAT IF YOU MODIFY THE TARGETS FILE YOU NEED TO CLOSE/OPEN THE PROJECT FOR THE CHANGES TO TAKE EFFECT -->
+
 <Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="MSBuild.Community.Tasks.Targets" />
   <Target Name="PackageModule" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <XmlRead Prefix="n"
                     Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
-                    XPath="dotnetnuke/packages/package/@version"
+                    XPath="dotnetnuke/packages/package[1]/@version"
                     XmlFileName="$(DNNFileName).dnn">
       <Output TaskParameter="Value" PropertyName="Version" />
     </XmlRead>
+
+    <!--in VS 2012 we exclude the packages folder -->
+    <ItemGroup>     
+      <InstallInclude Include="**\*.ascx" Exclude="packages\**" />
+      <InstallInclude Include="**\*.asmx" Exclude="packages\**" />
+      <InstallInclude Include="**\*.css" Exclude="packages\**" />
+      <InstallInclude Include="**\*.html" Exclude="packages\**" />
+      <InstallInclude Include="**\*.htm" Exclude="packages\**" />
+      <InstallInclude Include="**\*.resx" Exclude="packages\**" />
+      <InstallInclude Include="**\*.aspx" Exclude="packages\**" />
+      <InstallInclude Include="**\*.js" Exclude="packages\**" />
+      <InstallInclude Include="**\*.txt"  Exclude="**\obj\**;**\_ReSharper*\**;packages\**;**\.git\**;\website\**;" />
+      <InstallInclude Include="**\images\**" Exclude="packages\**" />
+      
+    </ItemGroup>
+
+    <ItemGroup>
+      <SourceInclude Include="**\*.ascx" />
+      <SourceInclude Include="**\*.asmx" />
+      <SourceInclude Include="**\*.css" />
+      <SourceInclude Include="**\*.xsl" />
+      <SourceInclude Include="**\*.html" />
+      <SourceInclude Include="**\*.htm" />
+      <SourceInclude Include="**\*.resx" />
+      <SourceInclude Include="**\*.xml" Exclude="**\obj\**;**\_ReSharper*\**;**\.git\**;\website\**;" />
+      <SourceInclude Include="**\*.aspx" />
+      <SourceInclude Include="**\*.js" />
+      <SourceInclude Include="**\*.txt" Exclude="**\obj\**;**\_ReSharper*\**;**\.git\**;\website\**;" />
+      <SourceInclude Include="**\images\**" />
+      <SourceInclude Include="**\*.cs" />
+	  <SourceInclude Include="**\Packages\**" />
+      <SourceInclude Include="**\*.cs.designer" />
+      <SourceInclude Include="**\*.csproj" />
+      <SourceInclude Include="**\*.targets" />
+      <SourceInclude Include="**\*.sln" />
+    </ItemGroup>
+    
     <CreateItem Include="$(DNNFileName).dnn">
       <Output TaskParameter="Include" ItemName="PackageManifestFiles" />
     </CreateItem>
-    <CreateItem Include="*.txt">
-      <Output TaskParameter="Include" ItemName="PackageTextFiles" />
+
+    <CreateItem Include="**\License.txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
-    <CreateItem Include="Components\**\*.dll">
-      <Output TaskParameter="Include" ItemName="ComponentReferences" />
+
+    <CreateItem Include="**\ReleaseNotes.txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
-    <CreateItem Include="*.asmx;*.ascx;*.css;*.xsl;*.svc;*.xml;*.gif;*.png">
-      <Output TaskParameter="Include" ItemName="PackageSourceFiles" />
+
+    <CreateItem Include="**\08.00.00.txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
-    <CreateItem Include="*.config">
-      <Output TaskParameter="Include" ItemName="PackageConfigFiles" />
+
+    <CreateItem Include="**\*.sqldataprovider">
+      <Output TaskParameter="Include" ItemName="SqlDataProviderFiles" />
     </CreateItem>
-    <CreateItem Include="App_LocalResources\*.resx">
-      <Output TaskParameter="Include" ItemName="PackageLocalResourceFiles" />
-    </CreateItem>
-    <CreateItem Include="Documentation\*.txt">
-      <Output TaskParameter="Include" ItemName="PackageDocumentationFiles" />
-    </CreateItem>
-    <CreateItem Include="Providers\DataProviders\SqlDataProvider\*.SqlDataProvider">
-      <Output TaskParameter="Include" ItemName="PackageSqlDataProviderFiles" />
-    </CreateItem>
-    <CreateItem Include="Data\*.SqlDataProvider">
-      <Output TaskParameter="Include" ItemName="PackageDataFiles" />
-    </CreateItem>
-    <CreateItem Include="images\*.*">
-      <Output TaskParameter="Include" ItemName="MyImages" />
-    </CreateItem>
-    <CreateItem Include="js\*.js">
-      <Output TaskParameter="Include" ItemName="MyJsFiles" />
-    </CreateItem>
-    <CreateItem Include="keys\*.*">
-      <Output TaskParameter="Include" ItemName="MyKeys" />
-    </CreateItem>
-    <CreateItem Include="Views\*.ascx">
-      <Output TaskParameter="Include" ItemName="MyViews" />
-    </CreateItem>
-    <CreateItem Include="Views\Controls\*.ascx">
-      <Output TaskParameter="Include" ItemName="MyViewControls" />
-    </CreateItem>
-    <CreateItem Include="RazorHelpers\*.cshtml">
-      <Output TaskParameter="Include" ItemName="MyRazorHelpers" />
-    </CreateItem>
-    <CreateItem Include="Scripts\*.cshtml">
-      <Output TaskParameter="Include" ItemName="MyScripts" />
-    </CreateItem>
-    <CreateItem Include="Scripts\Shared\*.cshtml">
-      <Output TaskParameter="Include" ItemName="MySharedScripts" />
-    </CreateItem>
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin" />
-    <Copy SourceFiles="@(PackageSourceFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageLocalResourceFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\App_LocalResources" />
-    <Copy SourceFiles="@(ComponentReferences)" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin" />
-    <Copy SourceFiles="@(PackageSqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Providers\DataProviders\SqlDataProvider" />
-    <Copy SourceFiles="@(PackageDataFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Data" />
+
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\$(AssemblyName).dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="@(SqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\%(RecursiveDir)" />
     <Copy SourceFiles="@(PackageManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageTextFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageConfigFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageDocumentationFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Documentation" />
-    <Copy SourceFiles="@(MyImages)" DestinationFolder="$(MSBuildProjectDirectory)\Package\images" />
-    <Copy SourceFiles="@(MyJsFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\js" />
-    <Copy SourceFiles="@(MyKeys)" DestinationFolder="$(MSBuildProjectDirectory)\Package\keys" />
-    <Copy SourceFiles="@(MyViews)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(MyViewControls)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Controls" />
-    <Copy SourceFiles="@(MyScripts)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Scripts" />
-    <Copy SourceFiles="@(MySharedScripts)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Scripts\Shared" />
-    <Copy SourceFiles="@(MyRazorHelpers)" DestinationFolder="$(MSBuildProjectDirectory)\Package\RazorHelpers" />
+    <Copy SourceFiles="@(PackageTxtFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
+    
+    
+    <!-- create the INSTALL RESOURCES.ZIP file -->
+    <Copy SourceFiles="@(InstallInclude)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\%(RecursiveDir)" />
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\ResourcesZip\**\*.*">
+      <Output TaskParameter="Include" ItemName="ResourcesContent" />
+    </CreateItem>
+    
+    <Zip Files="@(ResourcesContent)" WorkingDirectory="$(MSBuildProjectDirectory)\ResourcesZip" ZipFileName="Resources.$(Extension)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Resources.$(Extension)" DestinationFolder="package/" />
+
     <CreateItem Include="$(MSBuildProjectDirectory)\Package\**\*.*">
       <Output TaskParameter="Include" ItemName="OutputContent" />
     </CreateItem>
+    <!-- Create the Install package -->    
     <Zip Files="@(OutputContent)" WorkingDirectory="$(MSBuildProjectDirectory)\Package" ZipFileName="$(PackageName)_$(Version)_Install.$(Extension)" />
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Install.$(Extension)" DestinationFolder="$(WebsiteInstallPath)" />
-    <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Install.$(Extension)" />
+    <!-- Copy the Install package to the Packages folder -->
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Install.$(Extension)" DestinationFolder="install/" />
+    
     <RemoveDir Directories ="$(MSBuildProjectDirectory)\Package" />
+    <RemoveDir Directories ="$(MSBuildProjectDirectory)\ResourcesZip" />
+
+    
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\$(AssemblyName).dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="@(SqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\%(RecursiveDir)" />
+    <Copy SourceFiles="@(PackageManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
+    <Copy SourceFiles="@(PackageTxtFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
+
+    <!-- create the SOURCE RESOURCES.ZIP file -->
+    <Copy SourceFiles="@(SourceInclude)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\%(RecursiveDir)" />
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\ResourcesZip\**\*.*">
+      <Output TaskParameter="Include" ItemName="SourceContent" />
+    </CreateItem>
+
+    <Zip Files="@(SourceContent)" WorkingDirectory="$(MSBuildProjectDirectory)\ResourcesZip" ZipFileName="Resources.$(Extension)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Resources.$(Extension)" DestinationFolder="package/" />
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\Package\**\*.*">
+      <Output TaskParameter="Include" ItemName="OutputSource" />
+    </CreateItem>
+
+    <Zip Files="@(OutputSource)" WorkingDirectory="$(MSBuildProjectDirectory)\Package" ZipFileName="$(PackageName)_$(Version)_Source.$(Extension)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Source.$(Extension)" DestinationFolder="install/" />
+
+    <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Install.$(Extension)" />
+    <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Source.$(Extension)" />
+
+    <Delete Files="$(MSBuildProjectDirectory)\Resources.Zip" />
+
+    <RemoveDir Directories ="$(MSBuildProjectDirectory)\Package" />
+
+    <RemoveDir Directories ="$(MSBuildProjectDirectory)\ResourcesZip" />
+    
   </Target>
 </Project>

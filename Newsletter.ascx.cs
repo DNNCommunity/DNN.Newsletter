@@ -36,7 +36,6 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Framework;
 using DotNetNuke.Framework.JavaScriptLibraries;
-using DotNetNuke.Instrumentation;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.FileSystem;
@@ -44,6 +43,7 @@ using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Mail;
 using DotNetNuke.Services.Tokens;
 using DotNetNuke.UI.Skins.Controls;
+using DotNetNuke.Web.UI.WebControls.Extensions;
 
 #endregion
 
@@ -56,10 +56,6 @@ namespace DotNetNuke.Modules.Admin.Newsletters
     /// </summary>
     /// <remarks>
     /// </remarks>
-    /// <history>
-    /// 	[cnurse]	2004-09-13	Updated to reflect design changes for Help, 508 support and localisation
-    ///     [lpointer]  2006-02-03  Added 'From' email address support.
-    /// </history>
     /// -----------------------------------------------------------------------------
     public partial class Newsletter : PortalModuleBase
     {
@@ -89,10 +85,10 @@ namespace DotNetNuke.Modules.Admin.Newsletters
 
         #region Protected Methods
 
-		/// <summary>
-		/// Get Initial Entries.
-		/// </summary>
-		/// <returns></returns>
+        /// <summary>
+        /// Get Initial Entries.
+        /// </summary>
+        /// <returns></returns>
         protected string GetInitialEntries()
         {
             int id;
@@ -117,10 +113,6 @@ namespace DotNetNuke.Modules.Admin.Newsletters
         /// <summary>
         /// Page_Load runs when the control is loaded
         /// </summary>
-        /// <history>
-        /// 	[cnurse]	2004-09-10	Updated to reflect design changes for Help, 508 support and localisation
-        ///     [sleupold]  2007-10-07  Relay address and Language adoption added
-        /// </history>
         /// -----------------------------------------------------------------------------
         protected override void OnLoad(EventArgs e)
         {
@@ -131,7 +123,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
 
             ServicesFramework.Instance.RequestAjaxScriptSupport();
             ServicesFramework.Instance.RequestAjaxAntiForgerySupport();
-			JavaScript.RequestRegistration(CommonJs.DnnPlugins);
+            JavaScript.RequestRegistration(CommonJs.DnnPlugins);
 
             try
             {
@@ -154,11 +146,6 @@ namespace DotNetNuke.Modules.Admin.Newsletters
         /// </summary>
         /// <remarks>
         /// </remarks>
-        /// <history>
-        /// 	[cnurse]	2004-09-10	Updated to reflect design changes for Help, 508 support and localisation
-        ///     [sleupold]	2007-08-15	added support for tokens and SendTokenizedBulkEmail
-        ///     [sleupold]  2007-09-09   moved Roles to SendTokenizedBulkEmail
-        /// </history>
         /// -----------------------------------------------------------------------------
         protected void OnSendClick(Object sender, EventArgs e)
         {
@@ -414,9 +401,6 @@ namespace DotNetNuke.Modules.Admin.Newsletters
         /// </summary>
         /// <param name="sender">ignored</param>
         /// <param name="e">ignores</param>
-        /// <history>
-        /// 	[vmasanas]	2007-09-07  added
-        /// </history>
         protected void OnPreviewClick(object sender, EventArgs e)
         {
             try
