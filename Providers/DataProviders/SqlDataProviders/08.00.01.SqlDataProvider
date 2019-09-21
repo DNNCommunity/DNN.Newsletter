@@ -1,0 +1,8 @@
+﻿DECLARE @Count int
+
+SELECT @Count = COUNT(*) FROM {databaseOwner}{objectQualifier}ModuleDefinitions WHERE Friendlyname = 'Newsletters'
+
+IF @Count > 0
+BEGIN
+   DELETE FROM {databaseOwner}{objectQualifier}ModuleDefinitions WHERE Friendlyname = 'Newsletters'
+END
