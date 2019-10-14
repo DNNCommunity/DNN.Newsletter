@@ -37,17 +37,20 @@ using DotNetNuke.Entities.Users;
 using DotNetNuke.Framework;
 using DotNetNuke.Framework.JavaScriptLibraries;
 using DotNetNuke.Security.Roles;
+using DotNetNuke.Services;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Localization;
-using DotNetNuke.Services.Mail;
+//using DotNetNuke.Services.Mail;
 using DotNetNuke.Services.Tokens;
 using DotNetNuke.UI.Skins.Controls;
 using DotNetNuke.Web.UI.WebControls.Extensions;
 
+using Dnn.Modules.Newsletters.Components;
+
 #endregion
 
-namespace DotNetNuke.Modules.Admin.Newsletters
+namespace Dnn.Modules.Newsletters
 {
 
     /// -----------------------------------------------------------------------------
@@ -163,7 +166,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
                     SendEmail(roleNames, users, ref message, ref messageType);
                 }
 
-                UI.Skins.Skin.AddModuleMessage(this, message, messageType);
+                DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, message, messageType);
                 ((CDefault)Page).ScrollToControl(Page.Form);
             }
             catch (Exception exc)
@@ -175,7 +178,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
         private void SendEmail(List<string> roleNames, List<UserInfo> users, ref string message, ref ModuleMessage.ModuleMessageType messageType)
         {
             //it is awkward to ensure that email is disposed correctly because when sent asynch it should be disposed by the  asynch thread
-            var email = new SendTokenizedBulkEmail(roleNames, users, /*removeDuplicates*/ true, txtSubject.Text, ConvertToAbsoluteUrls(teMessage.Text));
+            var email = new LocalSendTokenizedBulkEmail(roleNames, users, /*removeDuplicates*/ true, txtSubject.Text, ConvertToAbsoluteUrls(teMessage.Text));
 
             bool isValid;
             try
@@ -210,7 +213,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             }
         }
 
-        private void SendMailAsyncronously(SendTokenizedBulkEmail email, out string message, out ModuleMessage.ModuleMessageType messageType)
+        private void SendMailAsyncronously(LocalSendTokenizedBulkEmail email, out string message, out ModuleMessage.ModuleMessageType messageType)
         {
             //First send off a test message
             var strStartSubj = Localization.GetString("EMAIL_BulkMailStart_Subject.Text", Localization.GlobalResourceFile);
@@ -219,13 +222,13 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             var strStartBody = Localization.GetString("EMAIL_BulkMailStart_Body.Text", Localization.GlobalResourceFile);
             if (!string.IsNullOrEmpty(strStartBody)) strStartBody = string.Format(strStartBody, txtSubject.Text, UserInfo.DisplayName, email.Recipients().Count);
 
-            var sendMailResult = Mail.SendMail(txtFrom.Text,
+            var sendMailResult = DotNetNuke.Services.Mail.Mail.SendMail(txtFrom.Text,
                 txtFrom.Text,
                 "",
                 "",
-                MailPriority.Normal,
+                DotNetNuke.Services.Mail.MailPriority.Normal,
                 strStartSubj,
-                MailFormat.Text,
+                DotNetNuke.Services.Mail.MailFormat.Text,
                 Encoding.UTF8,
                 strStartBody,
                 "",
@@ -249,7 +252,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             }
         }
 
-        private void SendAndDispose(SendTokenizedBulkEmail email)
+        private void SendAndDispose(LocalSendTokenizedBulkEmail email)
         {
             using (email)
             {
@@ -257,7 +260,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             }
         }
 
-        private void SendMailSynchronously(SendTokenizedBulkEmail email, out string strResult, out ModuleMessage.ModuleMessageType msgResult)
+        private void SendMailSynchronously(LocalSendTokenizedBulkEmail email, out string strResult, out ModuleMessage.ModuleMessageType msgResult)
         {
             int mailsSent = email.SendMails();
 
@@ -273,30 +276,30 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             }
         }
 
-        private bool PrepareEmail(SendTokenizedBulkEmail email, ref string message, ref ModuleMessage.ModuleMessageType messageType)
+        private bool PrepareEmail(LocalSendTokenizedBulkEmail email, ref string message, ref ModuleMessage.ModuleMessageType messageType)
         {
             bool isValid = true;
 
             switch (teMessage.Mode)
             {
                 case "RICH":
-                    email.BodyFormat = MailFormat.Html;
+                    email.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Html;
                     break;
                 default:
-                    email.BodyFormat = MailFormat.Text;
+                    email.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Text;
                     break;
             }
 
             switch (cboPriority.SelectedItem.Value)
             {
                 case "1":
-                    email.Priority = MailPriority.High;
+                    email.Priority = DotNetNuke.Services.Mail.MailPriority.High;
                     break;
                 case "2":
-                    email.Priority = MailPriority.Normal;
+                    email.Priority = DotNetNuke.Services.Mail.MailPriority.Normal;
                     break;
                 case "3":
-                    email.Priority = MailPriority.Low;
+                    email.Priority = DotNetNuke.Services.Mail.MailPriority.Low;
                     break;
                 default:
                     isValid = false;
@@ -333,13 +336,13 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             switch (cboSendMethod.SelectedItem.Value)
             {
                 case "TO":
-                    email.AddressMethod = SendTokenizedBulkEmail.AddressMethods.Send_TO;
+                    email.AddressMethod = LocalSendTokenizedBulkEmail.AddressMethods.Send_TO;
                     break;
                 case "BCC":
-                    email.AddressMethod = SendTokenizedBulkEmail.AddressMethods.Send_BCC;
+                    email.AddressMethod = LocalSendTokenizedBulkEmail.AddressMethods.Send_BCC;
                     break;
                 case "RELAY":
-                    email.AddressMethod = SendTokenizedBulkEmail.AddressMethods.Send_Relay;
+                    email.AddressMethod = LocalSendTokenizedBulkEmail.AddressMethods.Send_Relay;
                     if (string.IsNullOrEmpty(txtRelayAddress.Text))
                     {
                         message = string.Format(Localization.GetString("MessagesSentCount", LocalResourceFile), -1);
@@ -410,7 +413,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
                     //no subject or message
                     var strResult = Localization.GetString("MessageValidation", LocalResourceFile);
                     const ModuleMessage.ModuleMessageType msgResult = ModuleMessage.ModuleMessageType.YellowWarning;
-                    UI.Skins.Skin.AddModuleMessage(this, strResult, msgResult);
+                    DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, strResult, msgResult);
                     ((CDefault)Page).ScrollToControl(Page.Form);
                     return;
                 }

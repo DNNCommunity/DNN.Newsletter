@@ -1,4 +1,4 @@
-﻿<%@ Control Inherits="DotNetNuke.Modules.Admin.Newsletters.Newsletter" Language="C#" AutoEventWireup="false" Codebehind="Newsletter.ascx.cs" %>
+﻿<%@ Control Inherits="Dnn.Modules.Newsletters.Newsletter" Language="C#" AutoEventWireup="true" Codebehind="Newsletter.ascx.cs" %>
 <%@ Register TagPrefix="dnn" TagName="texteditor" Src="~/controls/texteditor.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="URLControl" Src="~/controls/DnnUrlControl.ascx" %>
@@ -56,7 +56,7 @@
     <div class="newAdvancedSettings" id="newAdvancedSettings">
         <fieldset>
             <div class="dnnFormItem dnnNewsletterAttachment">
-                <dnn:Label id="plAttachment" runat="server" ControlName="ctlAttachment" />
+                <dnn:label id="plAttachment" runat="server" controlname="ctlAttachment" />
                 <div class="dnnLeft"><dnn:URLControl id="ctlAttachment" runat="server" Required="False" ShowUpLoad="true" ShowTrack="False" ShowLog="False" ShowTabs="False" ShowUrls="False" /></div>
             </div>
             <div class="dnnFormItem">

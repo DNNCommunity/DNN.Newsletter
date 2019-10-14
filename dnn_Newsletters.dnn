@@ -1,13 +1,13 @@
 ﻿<dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="DotNetNuke.Newsletters" type="Module" version="08.00.00">
+    <package name="DotNetNuke.Newsletters" type="Module" version="08.00.01">
       <friendlyName>Newsletters</friendlyName>
       <description>Administrators can send bulk email to all users belonging to a particular Role.</description>
       <iconFile>~/Icons/Sigma/Newsletters_32X32.png</iconFile>
       <owner>
-        <name>DNN</name>
-        <organization>DNN Corp.</organization>
-        <url>http://www.dnnsoftware.com</url>
+        <name>DNN Community</name>
+        <organization>DNN Community</organization>
+        <url>https://dnncommunity.org</url>
         <email>support@dnnsoftware.com</email>
       </owner>
       <license src="license.txt" />
