@@ -99,7 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\LocalSendTokenizedBuildEmail.cs" />
+    <Compile Include="Components\LocalSendTokenizedBulkEmail.cs" />
     <Compile Include="Components\NewsletterController.cs" />
     <Compile Include="Newsletter.ascx.designer.cs">
       <DependentUpon>Newsletter.ascx</DependentUpon>
