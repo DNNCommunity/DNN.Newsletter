@@ -1,2 +1,14 @@
-<h3>Newsletters 08.00.00</h3><p>This is the initial release of the extracted Newsletters Module as installable package</p>
-<h3>Please note</h3><p>If you try to install this version on a clean new DNN 8.0.0 install, <strong>the install will fail</strong> due to a leftover record in the ModuleDefinitions table. Delete this record with SQL host options before trying to install this package.<br /><br /><strong>Cancel this install</strong> if you still have to do this or this install will fail!<br /><br />Command line:<br />DELETE FROM ModuleDefinitions where Friendlyname='Newsletters'</p>
+<h3>Newsletters 08.00.01</h3>
+<ul style="padding-left: 30px;">
+	<li>General project clean-up.</li>
+	<li>Add 08.00.01.SqlDataProvider script to resolve installation issues in DNN 08.00.00.</li>
+	<li>Update project references to utilize NuGet packages.</li>
+	<li>Remove install folder from tracked Git files.</li>
+	<li>Update project file and targets file to handle first-load of project without manual project file manipulation.</li>
+	<li>Resolve issue with sending file attachments.</li>
+	<li>Resolve namespace issues.</li>
+</ul><br />
+<h3>Newsletters 08.00.00</h3>
+<ul style="padding-left: 30px;">
+	<li>This is the initial release of the extracted Newsletters Module as installable package.</li>
+</ul>
