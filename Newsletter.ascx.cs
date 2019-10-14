@@ -37,6 +37,7 @@ using DotNetNuke.Entities.Users;
 using DotNetNuke.Framework;
 using DotNetNuke.Framework.JavaScriptLibraries;
 using DotNetNuke.Security.Roles;
+using DotNetNuke.Services;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Localization;
@@ -49,7 +50,7 @@ using Dnn.Modules.Newsletters.Components;
 
 #endregion
 
-namespace DotNetNuke.Modules.Admin.Newsletters
+namespace Dnn.Modules.Newsletters
 {
 
     /// -----------------------------------------------------------------------------
@@ -165,7 +166,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
                     SendEmail(roleNames, users, ref message, ref messageType);
                 }
 
-                UI.Skins.Skin.AddModuleMessage(this, message, messageType);
+                DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, message, messageType);
                 ((CDefault)Page).ScrollToControl(Page.Form);
             }
             catch (Exception exc)
@@ -221,13 +222,13 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             var strStartBody = Localization.GetString("EMAIL_BulkMailStart_Body.Text", Localization.GlobalResourceFile);
             if (!string.IsNullOrEmpty(strStartBody)) strStartBody = string.Format(strStartBody, txtSubject.Text, UserInfo.DisplayName, email.Recipients().Count);
 
-            var sendMailResult = Services.Mail.Mail.SendMail(txtFrom.Text,
+            var sendMailResult = DotNetNuke.Services.Mail.Mail.SendMail(txtFrom.Text,
                 txtFrom.Text,
                 "",
                 "",
-                Services.Mail.MailPriority.Normal,
+                DotNetNuke.Services.Mail.MailPriority.Normal,
                 strStartSubj,
-                Services.Mail.MailFormat.Text,
+                DotNetNuke.Services.Mail.MailFormat.Text,
                 Encoding.UTF8,
                 strStartBody,
                 "",
@@ -282,23 +283,23 @@ namespace DotNetNuke.Modules.Admin.Newsletters
             switch (teMessage.Mode)
             {
                 case "RICH":
-                    email.BodyFormat = Services.Mail.MailFormat.Html;
+                    email.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Html;
                     break;
                 default:
-                    email.BodyFormat = Services.Mail.MailFormat.Text;
+                    email.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Text;
                     break;
             }
 
             switch (cboPriority.SelectedItem.Value)
             {
                 case "1":
-                    email.Priority = Services.Mail.MailPriority.High;
+                    email.Priority = DotNetNuke.Services.Mail.MailPriority.High;
                     break;
                 case "2":
-                    email.Priority = Services.Mail.MailPriority.Normal;
+                    email.Priority = DotNetNuke.Services.Mail.MailPriority.Normal;
                     break;
                 case "3":
-                    email.Priority = Services.Mail.MailPriority.Low;
+                    email.Priority = DotNetNuke.Services.Mail.MailPriority.Low;
                     break;
                 default:
                     isValid = false;
@@ -412,7 +413,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters
                     //no subject or message
                     var strResult = Localization.GetString("MessageValidation", LocalResourceFile);
                     const ModuleMessage.ModuleMessageType msgResult = ModuleMessage.ModuleMessageType.YellowWarning;
-                    UI.Skins.Skin.AddModuleMessage(this, strResult, msgResult);
+                    DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, strResult, msgResult);
                     ((CDefault)Page).ScrollToControl(Page.Form);
                     return;
                 }

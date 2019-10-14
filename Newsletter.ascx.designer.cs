@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotNetNuke.Modules.Admin.Newsletters {
-    
-    
-    public partial class Newsletter {
-        
+namespace Dnn.Modules.Newsletters
+{
+
+
+    public partial class Newsletter
+    {
+
         /// <summary>
         /// plRoles control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plRoles;
-        
+
         /// <summary>
         /// recipients control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText recipients;
-        
+
         /// <summary>
         /// plLanguages control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plLanguages;
-        
+
         /// <summary>
         /// selLanguage control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.WebControls.LanguageSelector selLanguage;
-        
+
         /// <summary>
         /// plEmail control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plEmail;
-        
+
         /// <summary>
         /// txtEmail control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
+
         /// <summary>
         /// plFrom control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plFrom;
-        
+
         /// <summary>
         /// txtFrom control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFrom;
-        
+
         /// <summary>
         /// revEmailAddress control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmailAddress;
-        
+
         /// <summary>
         /// plReplyTo control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plReplyTo;
-        
+
         /// <summary>
         /// txtReplyTo control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReplyTo;
-        
+
         /// <summary>
         /// revReplyTo control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revReplyTo;
-        
+
         /// <summary>
         /// plSubject control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plSubject;
-        
+
         /// <summary>
         /// txtSubject control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.UserControls.TextEditor teMessage;
-                
+
         /// <summary>
         /// plAttachment control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plAttachment;
-        
+
         /// <summary>
         /// ctlAttachment control.
         /// </summary>
@@ -163,9 +165,8 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        /// protected global::DotNetNuke.UI.UserControls.UrlControl ctlAttachment;
         protected global::DotNetNuke.Web.UI.WebControls.DnnUrlControl ctlAttachment;
-        
+
         /// <summary>
         /// plReplaceTokens control.
         /// </summary>
@@ -174,7 +175,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plReplaceTokens;
-        
+
         /// <summary>
         /// chkReplaceTokens control.
         /// </summary>
@@ -183,7 +184,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkReplaceTokens;
-        
+
         /// <summary>
         /// plPriority control.
         /// </summary>
@@ -192,7 +193,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plPriority;
-        
+
         /// <summary>
         /// cboPriority control.
         /// </summary>
@@ -201,7 +202,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.Web.UI.WebControls.DnnComboBox cboPriority;
-        
+
         /// <summary>
         /// plSendMethod control.
         /// </summary>
@@ -210,7 +211,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plSendMethod;
-        
+
         /// <summary>
         /// cboSendMethod control.
         /// </summary>
@@ -219,7 +220,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.Web.UI.WebControls.DnnComboBox cboSendMethod;
-        
+
         /// <summary>
         /// pnlRelayAddress control.
         /// </summary>
@@ -228,7 +229,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlRelayAddress;
-        
+
         /// <summary>
         /// plRelayAddress control.
         /// </summary>
@@ -237,7 +238,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plRelayAddress;
-        
+
         /// <summary>
         /// txtRelayAddress control.
         /// </summary>
@@ -246,7 +247,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelayAddress;
-        
+
         /// <summary>
         /// RegularExpressionValidator1 control.
         /// </summary>
@@ -255,7 +256,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
-        
+
         /// <summary>
         /// plSendAction control.
         /// </summary>
@@ -264,7 +265,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UserControl plSendAction;
-        
+
         /// <summary>
         /// optSendAction control.
         /// </summary>
@@ -273,7 +274,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList optSendAction;
-        
+
         /// <summary>
         /// cmdSend control.
         /// </summary>
@@ -282,7 +283,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton cmdSend;
-        
+
         /// <summary>
         /// cmdPreview control.
         /// </summary>
@@ -291,7 +292,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton cmdPreview;
-        
+
         /// <summary>
         /// pnlPreview control.
         /// </summary>
@@ -300,7 +301,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlPreview;
-        
+
         /// <summary>
         /// label3 control.
         /// </summary>
@@ -309,7 +310,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label label3;
-        
+
         /// <summary>
         /// label1 control.
         /// </summary>
@@ -318,7 +319,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label label1;
-        
+
         /// <summary>
         /// lblPreviewSubject control.
         /// </summary>
@@ -327,7 +328,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPreviewSubject;
-        
+
         /// <summary>
         /// label2 control.
         /// </summary>
@@ -336,7 +337,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label label2;
-        
+
         /// <summary>
         /// lblPreviewBody control.
         /// </summary>
@@ -345,7 +346,7 @@ namespace DotNetNuke.Modules.Admin.Newsletters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPreviewBody;
-        
+
         /// <summary>
         /// cmdCancelPreview control.
         /// </summary>
