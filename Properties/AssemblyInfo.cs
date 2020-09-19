@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("DNN Community")]
 [assembly: AssemblyProduct("https://dnncommunity.org")]
-[assembly: AssemblyCopyright("DotNetNuke is copyright 2002-2016 by DNN Corporation. All Rights Reserved.")]
+[assembly: AssemblyCopyright("Copyright (c) .NET Foundation and Contributors. All Rights Reserved.")]
 [assembly: AssemblyTrademark("DNN")]
 // Version information for an assembly consists of the following four values:
 //
@@ -33,5 +33,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("8.0.1.0")]
-[assembly: AssemblyFileVersion("8.0.1.0")]
+[assembly: AssemblyVersion("8.1.0.0")]
+[assembly: AssemblyFileVersion("8.1.0.0")]

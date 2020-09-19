@@ -1,3 +1,10 @@
+<h3>Newsletters 08.01.00</h3>
+<ul style="padding-left: 30px;">
+	<li>Update DNN NuGet Packages to DNN 09.04.02.</li>
+	<li>Minimum required DNN version set to 09.04.02</li>
+	<li>Change target .NET Framework version from 4.5.1 to 4.7.2.</li>
+	<li>Remove LocalSendTokenizedBulkEmail class in favor of reverting back to the DNN API.  The bypass is no longer needed because the API bug was fixed in DNN 09.04.02.</li>
+</ul><br />
 <h3>Newsletters 08.00.01</h3>
 <ul style="padding-left: 30px;">
 	<li>General project clean-up.</li>

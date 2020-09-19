@@ -1,6 +1,6 @@
-﻿#region Copyright
+#region Copyright
 // 
-// DotNetNuke® - http://www.dnnsoftware.com
+// DotNetNuke� - http://www.dnnsoftware.com
 // Copyright (c) 2002-2015
 // by DNN Corp.
 // 
@@ -41,7 +41,7 @@ using DotNetNuke.Services;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Localization;
-//using DotNetNuke.Services.Mail;
+using DotNetNuke.Services.Mail;
 using DotNetNuke.Services.Tokens;
 using DotNetNuke.UI.Skins.Controls;
 using DotNetNuke.Web.UI.WebControls.Extensions;
@@ -178,7 +178,7 @@ namespace Dnn.Modules.Newsletters
         private void SendEmail(List<string> roleNames, List<UserInfo> users, ref string message, ref ModuleMessage.ModuleMessageType messageType)
         {
             //it is awkward to ensure that email is disposed correctly because when sent asynch it should be disposed by the  asynch thread
-            var email = new LocalSendTokenizedBulkEmail(roleNames, users, /*removeDuplicates*/ true, txtSubject.Text, ConvertToAbsoluteUrls(teMessage.Text));
+            var email = new SendTokenizedBulkEmail(roleNames, users, /*removeDuplicates*/ true, txtSubject.Text, ConvertToAbsoluteUrls(teMessage.Text));
 
             bool isValid;
             try
@@ -213,7 +213,7 @@ namespace Dnn.Modules.Newsletters
             }
         }
 
-        private void SendMailAsyncronously(LocalSendTokenizedBulkEmail email, out string message, out ModuleMessage.ModuleMessageType messageType)
+        private void SendMailAsyncronously(SendTokenizedBulkEmail email, out string message, out ModuleMessage.ModuleMessageType messageType)
         {
             //First send off a test message
             var strStartSubj = Localization.GetString("EMAIL_BulkMailStart_Subject.Text", Localization.GlobalResourceFile);
@@ -222,13 +222,13 @@ namespace Dnn.Modules.Newsletters
             var strStartBody = Localization.GetString("EMAIL_BulkMailStart_Body.Text", Localization.GlobalResourceFile);
             if (!string.IsNullOrEmpty(strStartBody)) strStartBody = string.Format(strStartBody, txtSubject.Text, UserInfo.DisplayName, email.Recipients().Count);
 
-            var sendMailResult = DotNetNuke.Services.Mail.Mail.SendMail(txtFrom.Text,
+            var sendMailResult = Mail.SendMail(txtFrom.Text,
                 txtFrom.Text,
                 "",
                 "",
-                DotNetNuke.Services.Mail.MailPriority.Normal,
+                MailPriority.Normal,
                 strStartSubj,
-                DotNetNuke.Services.Mail.MailFormat.Text,
+                MailFormat.Text,
                 Encoding.UTF8,
                 strStartBody,
                 "",
@@ -252,7 +252,7 @@ namespace Dnn.Modules.Newsletters
             }
         }
 
-        private void SendAndDispose(LocalSendTokenizedBulkEmail email)
+        private void SendAndDispose(SendTokenizedBulkEmail email)
         {
             using (email)
             {
@@ -260,7 +260,7 @@ namespace Dnn.Modules.Newsletters
             }
         }
 
-        private void SendMailSynchronously(LocalSendTokenizedBulkEmail email, out string strResult, out ModuleMessage.ModuleMessageType msgResult)
+        private void SendMailSynchronously(SendTokenizedBulkEmail email, out string strResult, out ModuleMessage.ModuleMessageType msgResult)
         {
             int mailsSent = email.SendMails();
 
@@ -276,30 +276,30 @@ namespace Dnn.Modules.Newsletters
             }
         }
 
-        private bool PrepareEmail(LocalSendTokenizedBulkEmail email, ref string message, ref ModuleMessage.ModuleMessageType messageType)
+        private bool PrepareEmail(SendTokenizedBulkEmail email, ref string message, ref ModuleMessage.ModuleMessageType messageType)
         {
             bool isValid = true;
 
             switch (teMessage.Mode)
             {
                 case "RICH":
-                    email.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Html;
+                    email.BodyFormat = MailFormat.Html;
                     break;
                 default:
-                    email.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Text;
+                    email.BodyFormat = MailFormat.Text;
                     break;
             }
 
             switch (cboPriority.SelectedItem.Value)
             {
                 case "1":
-                    email.Priority = DotNetNuke.Services.Mail.MailPriority.High;
+                    email.Priority = MailPriority.High;
                     break;
                 case "2":
-                    email.Priority = DotNetNuke.Services.Mail.MailPriority.Normal;
+                    email.Priority = MailPriority.Normal;
                     break;
                 case "3":
-                    email.Priority = DotNetNuke.Services.Mail.MailPriority.Low;
+                    email.Priority = MailPriority.Low;
                     break;
                 default:
                     isValid = false;
@@ -336,13 +336,13 @@ namespace Dnn.Modules.Newsletters
             switch (cboSendMethod.SelectedItem.Value)
             {
                 case "TO":
-                    email.AddressMethod = LocalSendTokenizedBulkEmail.AddressMethods.Send_TO;
+                    email.AddressMethod = SendTokenizedBulkEmail.AddressMethods.Send_TO;
                     break;
                 case "BCC":
-                    email.AddressMethod = LocalSendTokenizedBulkEmail.AddressMethods.Send_BCC;
+                    email.AddressMethod = SendTokenizedBulkEmail.AddressMethods.Send_BCC;
                     break;
                 case "RELAY":
-                    email.AddressMethod = LocalSendTokenizedBulkEmail.AddressMethods.Send_Relay;
+                    email.AddressMethod = SendTokenizedBulkEmail.AddressMethods.Send_Relay;
                     if (string.IsNullOrEmpty(txtRelayAddress.Text))
                     {
                         message = string.Format(Localization.GetString("MessagesSentCount", LocalResourceFile), -1);
