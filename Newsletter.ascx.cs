@@ -1,6 +1,6 @@
-#region Copyright
+﻿#region Copyright
 // 
-// DotNetNuke� - http://www.dnnsoftware.com
+// DotNetNuke® - http://www.dnnsoftware.com
 // Copyright (c) 2002-2015
 // by DNN Corp.
 // 
@@ -20,15 +20,6 @@
 #endregion
 #region Usings
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Web;
-
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Host;
@@ -37,7 +28,6 @@ using DotNetNuke.Entities.Users;
 using DotNetNuke.Framework;
 using DotNetNuke.Framework.JavaScriptLibraries;
 using DotNetNuke.Security.Roles;
-using DotNetNuke.Services;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Localization;
@@ -45,8 +35,14 @@ using DotNetNuke.Services.Mail;
 using DotNetNuke.Services.Tokens;
 using DotNetNuke.UI.Skins.Controls;
 using DotNetNuke.Web.UI.WebControls.Extensions;
-
-using Dnn.Modules.Newsletters.Components;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mime;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Web;
 
 #endregion
 

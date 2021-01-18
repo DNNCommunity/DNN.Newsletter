@@ -201,7 +201,7 @@ namespace Dnn.Modules.Newsletters
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.Web.UI.WebControls.DnnComboBox cboPriority;
+        protected global::System.Web.UI.WebControls.DropDownList cboPriority;
 
         /// <summary>
         /// plSendMethod control.
@@ -219,7 +219,7 @@ namespace Dnn.Modules.Newsletters
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.Web.UI.WebControls.DnnComboBox cboSendMethod;
+        protected global::System.Web.UI.WebControls.DropDownList cboSendMethod;
 
         /// <summary>
         /// pnlRelayAddress control.
