@@ -4,7 +4,6 @@
 <%@ Register TagPrefix="dnn" TagName="URLControl" Src="~/controls/DnnUrlControl.ascx" %>
 <%@ Register TagPrefix="dnn" Assembly="DotNetNuke" Namespace="DotNetNuke.UI.WebControls" %>
 <%@ Register TagPrefix="dnn" Assembly="DotNetNuke.Web" Namespace="DotNetNuke.Web.UI.WebControls" %>
-<%@ Register TagPrefix="dnn" Assembly="DotNetNuke.Web.Deprecated" Namespace="DotNetNuke.Web.UI.WebControls"%>
 <%@ Register TagPrefix="dnn" Assembly="DotNetNuke.Web.Client" Namespace="DotNetNuke.Web.Client.ClientResourceManagement" %>
 
 <dnn:DnnJsInclude runat="server" FilePath="~/Resources/Shared/Components/Tokeninput/jquery.tokeninput.js" Priority="103" />
@@ -65,33 +64,19 @@
             </div>
             <div class="dnnFormItem">
                 <dnn:Label id="plPriority" runat="server" ControlName="cboPriority" />
-              <%--  <asp:DropDownList id="cboPriority" runat="server">
+                <asp:DropDownList id="cboPriority" runat="server">
                     <asp:ListItem resourcekey="High" Value="1" />
                     <asp:ListItem resourcekey="Normal" Value="2" Selected="True" />
                     <asp:ListItem resourcekey="Low" Value="3" />
-                </asp:DropDownList>--%>
-                <dnn:DnnComboBox id="cboPriority" runat="server">
-                    <items>
-                        <dnn:DnnComboBoxItem resourcekey="High" Value="1" />
-                         <dnn:DnnComboBoxItem resourcekey="Normal" Value="2" Selected="True" />
-                          <dnn:DnnComboBoxItem resourcekey="Low" Value="3" />
-                    </items>
-                </dnn:DnnComboBox>
+                </asp:DropDownList>
             </div>
             <div class="dnnFormItem">
                 <dnn:Label id="plSendMethod" runat="server" ControlName="cboSendMethod" />
-             <%--   <asp:DropDownList id="cboSendMethod" runat="server" AutoPostBack="true">
+                <asp:DropDownList id="cboSendMethod" runat="server" AutoPostBack="true">
                     <asp:ListItem resourcekey="SendTo" Value="TO" Selected="True" />
                     <asp:ListItem resourcekey="SendBCC" Value="BCC" />
                     <asp:ListItem resourcekey="SendRelay" Value="RELAY" />
-                </asp:DropDownList>--%>
-                <dnn:DnnComboBox id="cboSendMethod" runat="server" AutoPostBack="true">
-                    <Items>
-                        <dnn:DnnComboBoxItem resourcekey="SendTo" Value="TO" Selected="True" />
-                        <dnn:DnnComboBoxItem resourcekey="SendBCC" Value="BCC" />
-                        <dnn:DnnComboBoxItem resourcekey="SendRelay" Value="RELAY"/>
-                    </Items>
-                </dnn:DnnComboBox>
+                </asp:DropDownList>
             </div>
             <div id="pnlRelayAddress" runat="server" visible="false" class="dnnFormItem">
                 <dnn:label id="plRelayAddress" runat="server" controlname="txtRelayAddress" />
