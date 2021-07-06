@@ -1,3 +1,8 @@
+<h3>Newsletters 08.02.00</h3>
+<ul style="padding-left: 30px;">
+	<li>Remove Telerik controls and update dependencies accordingly.</li>
+	<li>Update DNN NuGet Packages to DNN 09.09.01.</li>
+</ul><br />
 <h3>Newsletters 08.01.00</h3>
 <ul style="padding-left: 30px;">
 	<li>Update DNN NuGet Packages to DNN 09.04.02.</li>

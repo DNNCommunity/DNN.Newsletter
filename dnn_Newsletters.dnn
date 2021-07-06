@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="DotNetNuke.Newsletters" type="Module" version="08.01.00">
+    <package name="DotNetNuke.Newsletters" type="Module" version="08.02.00">
       <friendlyName>Newsletters</friendlyName>
       <description>Administrators can send bulk email to all users belonging to a particular Role.</description>
       <iconFile>~/Icons/Sigma/Newsletters_32X32.png</iconFile>
