@@ -46,38 +46,26 @@
     <DocumentationFile>bin\Dnn.Modules.Newsletters.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetNuke, Version=9.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.Core.9.4.2\lib\net45\DotNetNuke.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="DotNetNuke, Version=9.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.Core.9.9.1\lib\net45\DotNetNuke.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetNuke.DependencyInjection, Version=9.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.DependencyInjection.9.4.2\lib\netstandard2.0\DotNetNuke.DependencyInjection.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="DotNetNuke.DependencyInjection, Version=9.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.DependencyInjection.9.9.1\lib\netstandard2.0\DotNetNuke.DependencyInjection.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetNuke.Instrumentation, Version=9.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.Instrumentation.9.4.2\lib\net45\DotNetNuke.Instrumentation.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="DotNetNuke.Instrumentation, Version=9.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.Instrumentation.9.9.1\lib\net45\DotNetNuke.Instrumentation.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetNuke.Log4Net, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.Instrumentation.9.4.2\lib\net45\DotNetNuke.Log4Net.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="DotNetNuke.log4net, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.Instrumentation.9.9.1\lib\net45\DotNetNuke.log4net.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetNuke.Web, Version=9.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.Web.9.4.2\lib\net45\DotNetNuke.Web.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="DotNetNuke.Web, Version=9.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.Web.9.9.1\lib\net45\DotNetNuke.Web.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetNuke.Web.Deprecated, Version=9.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.Web.Deprecated.9.4.2\lib\net45\DotNetNuke.Web.Deprecated.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="DotNetNuke.WebUtility, Version=4.2.1.783, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.Web.9.9.1\lib\net45\DotNetNuke.WebUtility.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.Core.9.4.2\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <HintPath>packages\DotNetNuke.Core.9.9.1\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
@@ -101,11 +89,6 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Telerik.Web.UI, Version=2013.2.717.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetNuke.Web.Deprecated.9.4.2\lib\net45\Telerik.Web.UI.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\NewsletterController.cs" />
@@ -139,6 +122,13 @@
     <None Include="packages.config" />
     <Content Include="Providers\DataProviders\SqlDataProviders\08.00.01.SqlDataProvider" />
     <Content Include="README.md" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
